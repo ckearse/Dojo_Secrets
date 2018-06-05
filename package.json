@@ -1,0 +1,22 @@
+{
+  "name": "dojo_secrets_app",
+  "version": "1.0.0",
+  "description": "Anonymous message board app with authentication and back-end validations built on node/express/mongoose w/mongodb",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.15.6",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "ckearse",
+  "license": "ISC"
+}

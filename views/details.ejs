@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Dojo Secrets - Details</title>
+  </head>
+  <body>
+      <style>
+          .navLinks{
+            position: absolute;
+            right: 0px;
+            margin-right: 15px;
+          }
+        </style>
+
+    <div id="header">
+      <h1>Comment on this secret</h1>
+
+      <% if(session.user_id){ %>
+        <div class="navLinks">
+          <a href="/secrets">Home</a>
+          <a href="/logout">Logout</a>
+        </div>
+      <% } %>
+    </div>
+
+    <div id="content_div" style="border: grey">
+      <div class="secret" style="color: grey">
+        <p><%= secret.content %></p>
+      </div>
+
+      <% if(secret.comments){ %>
+        <% for(var comment of secret.comments){ %>  
+          <div class="comment" style="border: grey">
+            <hr>
+            <p><%= comment.content %></p>
+          </div>
+        <% } %>
+      <% } %>
+
+      <div class="comment" style="border: grey">
+        <form action="/secrets/<%=secret.id%>/new" method="POST">
+          
+          <input type="text" name="comment_content" placeholder="Leave your comment here!">
+
+        </form>
+      </div>
+      
+    </div>
+
+    <div class="error_div">
+      <span style="color:red;">
+        <% if(messages.secret_errors){ %>
+          <h3>Errors:</h3>
+          <% for(var error of messages.secret_errors){ %>
+            <p><%= error %></p>
+          <% } %>
+        <% } %>
+      </span>
+    </div>
+    
+  </body>
+</html>

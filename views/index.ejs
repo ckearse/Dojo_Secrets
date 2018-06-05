@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <title>Dojo Secrets - Login and Registration</title>
+  </head>
+  <body>
+    <style>
+      form{
+        border: solid black 2px; 
+        padding: 15px; 
+      }
+      .logout{
+        position: absolute;
+        right: 0px;
+        margin-right: 15px;
+      }
+      .content_div{
+        display: block;
+      }
+      .left_pane{
+        display: inline-block;
+        min-width: 204px;
+        width: 50%;
+        
+      }
+      .right_pane{
+        display: inline-block;
+        vertical-align: top;
+        padding: 15px;
+        position: absolute;
+      }
+    </style>
+
+    <% if(session.user_id){ %>
+      <a class="logout" href="/logout">Logout</a>
+    <% } %>
+
+    <h1>Dojo Secrets</h1>
+
+    <div id="content_div">
+
+      <div class="left_pane">
+        <form action="/login" method="post">
+          <h2>Login:</h2>
+          <hr>
+          <label>Email:<br>
+            <input type="text" name="email" placeholder="email"><br><br>
+          </label>
+          <label>Password:<br>
+            <input type="password" name="password" placeholder="Name"><br><br>
+          </label>
+
+          <input type="submit" value="Login">
+        </form>
+      </div>
+
+      <div class="right_pane">
+        <span style="color:red;">
+          <% if(messages.login_errors){ %>
+            <h3>Errors:</h3>
+            <% for(var error of messages.login_errors){ %>
+              <p><%= error %></p>
+            <% } %>
+          <% } %>
+        </span>
+      </div>
+    </div>
+
+    
+    <div id="content_div">
+
+        <div class="left_pane">
+            <form action="/registration" method="post">
+              <h2>Registration:</h2>
+              <hr>
+        
+              <label>Email: <br>
+                <input type="text" name="email" placeholder="Email"><br><br>
+              </label>
+              <label>Password: <br>
+                <input type="password" name="password"><br><br>
+              </label>
+              <label>Password Confirm: <br>
+                <input type="password" name="password_confirm"><br><br>
+              </label>
+        
+              <input type="submit" value="Register">
+            </form>
+        </div>
+
+        <div class="right_pane">
+          <span style="color:red;">
+            <% if(messages.registration_errors){ %>
+              <h3>Errors:</h3>
+              <% for(var error of messages.registration_errors){ %>
+                <p><%= error %></p>
+              <% } %>
+            <% } %>
+          </span>
+        </div>
+      </div>
+
+  </body>
+</html>
